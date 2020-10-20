@@ -3,7 +3,9 @@ export enum Routes {
     AppStack = "AppStack",
     Login = "Login",
     GetStarted = "GetStarted",
-    HOME = "Home",
+    Home = "Home",
+    HomeStack = "HomeStack",
+    ProjectCreation = "ProjectCreation",
     Explore = "Explore",
     Notifications = "Notifications",
     Profile = "Profile",
@@ -11,7 +13,7 @@ export enum Routes {
 }
 
 export const TabIcons = {
-    [Routes.HOME]: "home",
+    [Routes.Home]:          "home",
     [Routes.Explore]: "search1",
     [Routes.Notifications]: "bells",
     [Routes.Profile]: "user",

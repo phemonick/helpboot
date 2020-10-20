@@ -8,6 +8,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { Routes, TabIcons } from "./routes";
 import Category from "../screens/Category";
 import GetStarted from "../screens/GetStarted";
+import ProjectCreation from "../screens/ProjectCreation";
 import Home from "../screens/Home";
 import Icon from "react-native-vector-icons/AntDesign";
 import Login from "../screens/Login";
@@ -28,6 +29,16 @@ const getTabIcon = (iconProps: TabBarIconProps, routeName: string): React.ReactE
     return <Icon name={iconName} color={tintColor || Colour.primary} size={30} style={{ height: 34 }} />;
 };
 
+const HomeStack = createStackNavigator({
+    [Routes.Home]:            withSafeAreaView(Home),
+    [Routes.ProjectCreation]: withSafeAreaView(ProjectCreation),
+}, {
+    headerMode:       "none",
+    // TODO: reset this to Home
+    initialRouteName: Routes.ProjectCreation,
+});
+
+
 const AuthStack = createStackNavigator({
     [Routes.GetStarted]: GetStarted,
     [Routes.Login]:      Login,
@@ -38,13 +49,19 @@ const AuthStack = createStackNavigator({
 });
 
 const AppStack = createBottomTabNavigator({
-    [Routes.HOME]:          withSafeAreaView(Home),
+    [Routes.HomeStack]:     {
+        screen: HomeStack,
+        navigationOptions: { tabBarLabel: Routes.Home }
+    },
     [Routes.Explore]:       withSafeAreaView(Category),
     [Routes.Notifications]: Test,
     [Routes.Profile]:       Test,
 }, {
     defaultNavigationOptions: ({ navigation }: { navigation: NavigationScreenProp<NavigationRoute> }): object => {
-        const { routeName } = navigation.state;
+        let { routeName } = navigation.state;
+        if (routeName === Routes.HomeStack) {
+            routeName = Routes.Home;
+        }
         return { tabBarIcon: (iconProps: TabBarIconProps) => getTabIcon(iconProps, routeName) };
     },
     initialRouteName: Routes.HOME,

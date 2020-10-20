@@ -57,14 +57,19 @@ interface InputProps {
     | "tel"
     | "username"
     | "off";
+    disabled?: boolean;
+    onFocus?(): void;
     onChange(text: string): void;
 }
 
-Input.defaultProps = { numberOfLines: 1 };
+Input.defaultProps = {
+    disabled:      false,
+    numberOfLines: 1,
+};
 
 export default function Input(props: InputProps) {
     return (
-        <View style={[styles.container, props.containerStyle]}>
+        <View style={[styles.container, props.isTextArea && styles.textArea, props.containerStyle]}>
             <TextInput
                 value={props.value}
                 defaultValue={props.defaultValue}
@@ -77,6 +82,8 @@ export default function Input(props: InputProps) {
                 secureTextEntry={props.secureTextEntry}
                 onChangeText={props.onChange}
                 autoCompleteType={props.autoCompleteType}
+                onFocus={props.onFocus}
+                editable={!props.disabled}
             />
         </View>
     );

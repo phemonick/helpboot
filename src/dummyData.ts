@@ -6,27 +6,26 @@ export interface DataProps {
 }
 
 export interface CategoryProps {
-    id: number;
-    title: string;
+    name: string;
 }
 
 export default {
     categories: [
         {
             id:    1,
-            title: "All",
+            name: "All",
         },
         {
             id:    2,
-            title: "Education",
+            name: "Education",
         },
         {
             id:    3,
-            title: "Traffic",
+            name: "Traffic",
         },
         {
             id:    4,
-            title: "Provisions",
+            name: "Provisions",
         },
     ],
     projects: [

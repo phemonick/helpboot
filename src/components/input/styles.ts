@@ -11,4 +11,5 @@ export default StyleSheet.create({
         color:    Colour.textColor,
         fontSize: 18,
     },
+    textArea: { height: 200 }
 });

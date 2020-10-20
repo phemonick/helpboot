@@ -2,7 +2,7 @@ import * as React from "react";
 import { ScrollView, Text, View } from "react-native";
 import Button from "../../components/buttons";
 import dummyData, { CategoryProps } from "../../dummyData";
-import ProjectCard from "../../components/ProjectCard";
+import ProjectCard from "../../components/projectCard";
 import styles from "../Category/styles";
 
 export default function Category() {
@@ -26,7 +26,7 @@ export default function Category() {
                         const onPress = () => getCategoryEvents(category);
                         return (
                             <Button
-                                text={category.title}
+                                text={category.name}
                                 key={category.id}
                                 onPress={onPress}
                                 isOutlined={selectedCategory.id === category.id}

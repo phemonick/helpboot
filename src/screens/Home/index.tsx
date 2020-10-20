@@ -7,7 +7,7 @@ import { Routes } from "../../navigation/routes";
 import Button from "../../components/buttons";
 import dummyData from "../../dummyData";
 import helpinghands from "../../assets/images/helpinghands.png";
-import ProjectCard from "../../components/ProjectCard";
+import ProjectCard from "../../components/projectCard";
 import styles from "./styles";
 
 export default function Home(props: NavigationInjectedProps) {
